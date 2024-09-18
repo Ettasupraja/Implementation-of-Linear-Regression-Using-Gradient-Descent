@@ -24,7 +24,6 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics import mean_absolute_error,mean_squared_error
 import matplotlib.pyplot as plt
-
 dataset=pd.read_csv('student_scores.csv')
 print(dataset.head())
 print(dataset.tail())
@@ -77,9 +76,11 @@ print(y)
  86]
 
 X.shape
+
 (25, 1)
 
 Y.shape
+
 (25,)
 
 m=0
