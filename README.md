@@ -24,59 +24,69 @@ To write a program to predict the profit of a city using the linear regression m
 Program to implement the linear regression using gradient descent.
 Developed by: ETTA SUPRAJA
 RegisterNumber:  212223220022
-*/
+```
 import numpy as np
 import pandas as pd
-from sklearn.metrics import mean_absolute_error,mean_squared_error
-import matplotlib.pyplot as plt
+from sklearn.preprocessing import StandardScaler
 
-```
-dataset=pd.read_csv('student_scores.csv')
-print(dataset.head())
-print(dataset.tail())
-
-```
-![image](https://github.com/user-attachments/assets/9d567d0d-08e1-462e-80b7-98ed92dad256)
-
-dataset.info()
-![image](https://github.com/user-attachments/assets/81000220-128b-48cc-9ca2-1af4f98fb904)
-
-#assigning hours to X & scores to Y
-X = dataset.iloc[:,:-1].values
-print(X)
-Y = dataset.iloc[:,-1].values
-print(Y)
-
-![image](https://github.com/user-attachments/assets/bab10ff1-b76b-4e5d-a5fe-cadca5896e47)
-
-#Building the model
-m = 0
-c = 0
-
-L = 0.001  #The learning Rate
-epochs = 5000  #The number of iterations to perform the task
-
-n = float(len(X)) # Number of elements in X
-error = []
-#Performing Gradient Descent
-for i in range(epochs):
-    Y_pred = m*X + c # The current  predicted value of Y
-    D_m = (-2/n) * sum(X * (Y - Y_pred))   # Derivative wrt m
-    D_c = (-2/n) * sum(Y - Y_pred)   # Derivative wrt c
-    m = m - L * D_m   # Update m
-    c = c - L * D_c   # Update c
+def linear_regression(X1,y,learning_rate = 0.1, num_iters = 1000):
+    X = np.c_[np.ones(len(X1)),X1]
     
-    error.append(sum(Y - Y_pred)**2)
+    theta = np.zeros(X.shape[1]).reshape(-1,1)
+    
+    for _ in range(num_iters):
+        
+        #calculate predictions
+        predictions = (X).dot(theta).reshape(-1,1)
+        
+        #calculate errors
+        errors=(predictions - y ).reshape(-1,1)
+        
+        #update theta using gradiant descent
+        theta -= learning_rate*(1/len(X1))*X.T.dot(errors)
+    return theta
+                                        
+data=pd.read_csv("C:/classes/ML/50_Startups.csv")
+data.head()
 
-print(m,c)
-![image](https://github.com/user-attachments/assets/324728f4-15a4-4196-95fe-786d0ce89a96)
+#assuming the lost column is your target variable 'y' 
 
-type(error)
-print(len(error))
-plt.plot(range(0,epochs),error)
-![image](https://github.com/user-attachments/assets/2aa95320-131d-482a-bf47-b0c4bd2e1bc0)
+X = (data.iloc[1:,:-2].values)
+X1=X.astype(float)
 
-![image](https://github.com/user-attachments/assets/143288b0-fa54-4b07-82d5-922d75e6514b)
+scaler = StandardScaler()
+y=(data.iloc[1:,-1].values).reshape(-1,1)
+X1_Scaled = scaler.fit_transform(X1)
+Y1_Scaled = scaler.fit_transform(y)
+print(X)
+print(X1_Scaled)
+
+#learn modwl paramerers
+
+theta=linear_regression(X1_Scaled,Y1_Scaled)
+
+#predict target value for a new data
+new_data=np.array([165349.2,136897.8,471784.1]).reshape(-1,1)
+new_Scaled=scaler.fit_transform(new_data)
+prediction=np.dot(np.append(1,new_Scaled),theta)
+prediction=prediction.reshape(-1,1)
+pre=scaler.inverse_transform(prediction)
+print(prediction)
+print(f"Predicted value: {pre}")
 ```
+Output:
+
+DATA.HEAD()
+![image](https://github.com/user-attachments/assets/37cdf507-b06d-441f-9621-dd1714be530f)
+
+X VALUE
+![image](https://github.com/user-attachments/assets/0129c144-e71c-48d7-9fd9-9c78df8f2d2e)
+
+X1_SCALED VALUE
+![image](https://github.com/user-attachments/assets/bd5d54d0-cb61-4b60-9a1f-ad4e5a330e2d)
+
+PREDICTED VALUES:
+![image](https://github.com/user-attachments/assets/9f103584-959e-4da3-b66f-39c8f44ffe78)
+
 ## Result:
 Thus the program to implement the linear regression using gradient descent is written and verified using python programming.
