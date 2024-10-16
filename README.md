@@ -77,9 +77,11 @@ print(f"Predicted value: {pre}")
 Output:
 
 DATA.HEAD()
+
 ![image](https://github.com/user-attachments/assets/37cdf507-b06d-441f-9621-dd1714be530f)
 
 X VALUE
+
 ![image](https://github.com/user-attachments/assets/0129c144-e71c-48d7-9fd9-9c78df8f2d2e)
 
 X1_SCALED VALUE
