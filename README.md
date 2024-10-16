@@ -83,9 +83,11 @@ X VALUE
 ![image](https://github.com/user-attachments/assets/0129c144-e71c-48d7-9fd9-9c78df8f2d2e)
 
 X1_SCALED VALUE
+
 ![image](https://github.com/user-attachments/assets/bd5d54d0-cb61-4b60-9a1f-ad4e5a330e2d)
 
 PREDICTED VALUES:
+
 ![image](https://github.com/user-attachments/assets/9f103584-959e-4da3-b66f-39c8f44ffe78)
 
 ## Result:
