@@ -32,18 +32,24 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics import mean_absolute_error,mean_squared_error
 import matplotlib.pyplot as plt
+
+
 ```
 
 ```
 dataset=pd.read_csv('student_scores.csv')
 print(dataset.head())
 print(dataset.tail())
+
+
 ```
 ![image](https://github.com/user-attachments/assets/2d040427-3c7a-4784-a2ae-946eeddd31fe)
 
 
 ```
 dataset.info()
+
+
 ```
 
 ![image](https://github.com/user-attachments/assets/07171d54-b195-4df6-ac26-6d101e72fb16)
@@ -54,6 +60,8 @@ X = dataset.iloc[:,:-1].values
 print(X)
 Y = dataset.iloc[:,-1].values
 print(Y)
+
+
 ```
 
 ![image](https://github.com/user-attachments/assets/08964cf4-bbb0-4e40-80c3-2383d6dcd4af)
@@ -79,6 +87,8 @@ for i in range(epochs):
     error.append(sum(Y - Y_pred)**2)
 
 print(m,c)
+
+
 ```
 
 ![image](https://github.com/user-attachments/assets/cf6526ce-25b7-4b6b-b459-740007c777c7)
@@ -87,6 +97,7 @@ print(m,c)
 type(error)
 print(len(error))
 plt.plot(range(0,epochs),error)
+
 ```
 
 ![image](https://github.com/user-attachments/assets/75b90c58-4508-4c9d-82fb-7015467a0b72)
